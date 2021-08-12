@@ -5,7 +5,9 @@ public class GamblerProblem {
     public static final int $PERGAME = 1;
     public static final int WIN = 1;
     public static final int LOSE = 0;
+    public static int TOTALAMOUNT = 100;
     public static int WinningAmount,LosingAount,stake;
+    public static int[] array1;
 
     public static void WinOrLose()
     {
@@ -42,11 +44,25 @@ public class GamblerProblem {
         }
         return stake;
     }
+
+    public static void CalculateAmountLostOrWon(int days){
+        for(int i=0;i<days;i++)
+        {
+            array1=new int[days];
+            int x=TerminateGame();
+            array1[i]=x;
+            TOTALAMOUNT=TOTALAMOUNT+x;
+            System.out.println("The amount won in " + days + " days is : $" +TOTALAMOUNT);
+
+        }
+
+    }
     public static void main(String[] args) {
 
         //WinOrLose();
         int i = TerminateGame();
         System.out.println(i);
+        CalculateAmountLostOrWon(30);
 
     }
 
