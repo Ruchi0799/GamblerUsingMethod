@@ -7,7 +7,7 @@ public class GamblerProblem {
     public static final int LOSE = 0;
     public static int TOTALAMOUNT = 100;
     public static int WinningAmount,LosingAount,stake;
-    public static int[] array1;
+    //public static int[] array1;
 
     public static void WinOrLose()
     {
@@ -45,24 +45,44 @@ public class GamblerProblem {
         return stake;
     }
 
-    public static void CalculateAmountLostOrWon(int days){
+    public static int[] CalculateAmountLostOrWon(int days){
+        int[] array1=new int[days];
         for(int i=0;i<days;i++)
         {
-            array1=new int[days];
+
             int x=TerminateGame();
             array1[i]=x;
             TOTALAMOUNT=TOTALAMOUNT+x;
             System.out.println("The amount won in " + days + " days is : $" +TOTALAMOUNT);
 
-        }
 
+        }
+        return array1;
     }
+    public static void PrintAmountWonDaily(int[] array1)
+    {
+        for(int i=0;i<array1.length;i++)
+        {
+            if(array1[i]==WinningAmount)
+            {
+                System.out.println("Day " +i+ " You Won. Your total amount is " +array1[i] );
+            }
+            else if(array1[i]==LosingAount)
+            {
+                System.out.println("Day " +i+ " You lose. Your total amount is " +array1[i] );
+            }
+            //System.out.println("The amount won on day " + i + " is " +array1[i]);
+        }
+    }
+
     public static void main(String[] args) {
 
         //WinOrLose();
         int i = TerminateGame();
         System.out.println(i);
-        CalculateAmountLostOrWon(30);
+        //CalculateAmountLostOrWon(30);
+        int[] array2=CalculateAmountLostOrWon(30);
+        PrintAmountWonDaily(array2);
 
     }
 
